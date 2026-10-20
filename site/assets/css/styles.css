@@ -402,7 +402,7 @@ body.menu-open .site-header .icon-btn { border-color: rgba(255, 255, 255, .4); b
 @media (max-width: 767px) {
   .hero { display: block; min-height: 0; }
   .hero-media { position: relative; display: block; height: 78svh; min-height: 520px; max-height: 760px; }
-  .hero-media img { position: absolute; inset: 0; object-position: 58% 88%; }
+  .hero-media img { position: absolute; inset: 0; object-position: 50% 18%; }
   .hero::after {
     bottom: auto; height: 78svh; min-height: 520px; max-height: 760px;
     background:
