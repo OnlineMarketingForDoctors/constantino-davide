@@ -12,3 +12,7 @@ Keep every layer below in place. Do not remove or weaken any of them unless the 
    If a framework is used, put it in the shared root layout so no page can miss it.
 3. **Do not block crawling in `robots.txt`** — crawlers must be able to fetch pages to see the noindex. A `Disallow: /` would hide the noindex and can let URLs get indexed from external links. Do not add a `robots.txt` that disallows paths, and do not add a sitemap.
 4. Do not add canonical links, sitemaps, or structured data that point search engines at this site.
+
+## Site structure
+
+The website lives in `site/` and `vercel.json` sets `"outputDirectory": "site"`, so only that folder is served. Source material (brand questionnaire, raw photos, Instagram exports) stays at the repo root and must never be copied into `site/`.
