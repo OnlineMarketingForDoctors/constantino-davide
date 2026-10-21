@@ -819,8 +819,8 @@ body.menu-open .site-header .icon-btn { border-color: rgba(255, 255, 255, .4); b
 
 @media (max-width: 767px) {
   .testimonial { align-items: flex-end; min-height: 760px; }
-  .testimonial-media { inset: 0; transform: none !important; }
-  .testimonial-media img { object-position: 15% 0%; }
+  .testimonial-media { inset: 0 0 auto 0; height: 58%; transform: none !important; }
+  .testimonial-media img { object-position: 28% 30%; }
   .testimonial::before { background: linear-gradient(180deg, rgba(14, 28, 46, .05) 15%, rgba(14, 28, 46, .85) 45%, rgba(14, 28, 46, .96) 100%); }
   .testimonial-inner { padding-block: 64px; }
 }
