@@ -64,6 +64,27 @@
     });
   }
 
+  /* ---------- Procedure panels ---------- */
+  var panels = Array.prototype.slice.call(document.querySelectorAll('[data-panel]'));
+  var wideScreen = window.matchMedia('(min-width: 900px)');
+  function activatePanel(panel) {
+    panels.forEach(function (p) {
+      var active = p === panel;
+      p.classList.toggle('is-active', active);
+      p.querySelector('[data-panel-btn]').setAttribute('aria-expanded', String(active));
+    });
+  }
+  var hoverTimer;
+  panels.forEach(function (panel) {
+    panel.querySelector('[data-panel-btn]').addEventListener('click', function () { activatePanel(panel); });
+    panel.addEventListener('mouseenter', function () {
+      if (!wideScreen.matches) return;
+      clearTimeout(hoverTimer);
+      hoverTimer = setTimeout(function () { activatePanel(panel); }, 120);
+    });
+    panel.addEventListener('mouseleave', function () { clearTimeout(hoverTimer); });
+  });
+
   /* ---------- Results: filter, buttons and drag ---------- */
   var track = document.querySelector('[data-results-track]');
   var chips = document.querySelectorAll('[data-filter]');
