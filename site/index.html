@@ -517,30 +517,68 @@
       </div>
     </section>
 
-    <!-- ============ CONSULTATION CTA ============ -->
+    <!-- ============ CONSULTATION FORM ============ -->
     <section class="consult" id="consultation" aria-labelledby="consult-title">
       <div class="container consult-inner">
         <div class="consult-copy">
           <h2 id="consult-title" class="display-lg">Book a consultation</h2>
           <p class="lede">Tell us what you would like to change. We will arrange a consultation with Dr Davide in London or Trieste and answer your questions before you commit to anything.</p>
-          <div class="consult-options">
-            <a class="consult-option" href="tel:+447949910562">
-              <span class="consult-option-label">Call London</span>
-              <span class="consult-option-value">+44 7949 910562</span>
-            </a>
-            <a class="consult-option" href="tel:+393356948680">
-              <span class="consult-option-label">Call Trieste</span>
-              <span class="consult-option-value">+39 335 694 8680</span>
-            </a>
-            <a class="consult-option consult-option--wide" href="mailto:drdavide@costantinodavide.com?subject=Consultation%20request">
-              <span class="consult-option-label">Email Dr Davide</span>
-              <span class="consult-option-value">drdavide@costantinodavide.com</span>
-            </a>
+          <ul class="consult-direct">
+            <li><a href="tel:+447949910562"><span>London</span>+44 7949 910562</a></li>
+            <li><a href="tel:+393356948680"><span>Trieste</span>+39 335 694 8680</a></li>
+            <li><a href="mailto:drdavide@costantinodavide.com"><span>Email</span>drdavide@costantinodavide.com</a></li>
+          </ul>
+        </div>
+        <form class="consult-form" data-consult-form novalidate>
+          <div class="form-row">
+            <div class="field">
+              <label for="cf-name">Full name</label>
+              <input id="cf-name" name="name" type="text" autocomplete="name" required>
+              <p class="field-error" id="cf-name-err">Enter your name</p>
+            </div>
+            <div class="field">
+              <label for="cf-phone">Phone</label>
+              <input id="cf-phone" name="phone" type="tel" autocomplete="tel" required>
+              <p class="field-error" id="cf-phone-err">Enter a phone number</p>
+            </div>
           </div>
-        </div>
-        <div class="consult-media">
-          <img src="assets/img/gen/consultation-1200.webp" srcset="assets/img/gen/consultation-700.webp 700w, assets/img/gen/consultation-1200.webp 1200w" sizes="(min-width: 1024px) 40vw, 90vw" alt="" width="1200" height="805" loading="lazy">
-        </div>
+          <div class="field">
+            <label for="cf-email">Email</label>
+            <input id="cf-email" name="email" type="email" autocomplete="email" required>
+            <p class="field-error" id="cf-email-err">Enter a valid email address</p>
+          </div>
+          <div class="form-row">
+            <div class="field">
+              <label for="cf-procedure">Area of interest</label>
+              <select id="cf-procedure" name="procedure">
+                <option value="">Choose one</option>
+                <option>Face</option>
+                <option>Breast</option>
+                <option>Body</option>
+                <option>Not sure yet</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="cf-location">Preferred location</label>
+              <select id="cf-location" name="location">
+                <option>London</option>
+                <option>Trieste</option>
+                <option>Either</option>
+              </select>
+            </div>
+          </div>
+          <div class="field">
+            <label for="cf-message">Message <span class="optional">(optional)</span></label>
+            <textarea id="cf-message" name="message" rows="4"></textarea>
+          </div>
+          <label class="consent">
+            <input type="checkbox" name="consent" required>
+            <span>I agree to be contacted about my enquiry.</span>
+          </label>
+          <p class="field-error consent-error" id="cf-consent-err">Tick the box so we can contact you</p>
+          <button type="submit" class="btn btn-brass btn-lg consult-submit">Request a consultation</button>
+          <p class="form-status" role="status" aria-live="polite" data-form-status hidden></p>
+        </form>
       </div>
     </section>
   </main>

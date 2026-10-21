@@ -223,6 +223,30 @@
   window.addEventListener('resize', requestFrame);
   frame();
 
+  /* ---------- Consultation form (placeholder, not connected) ---------- */
+  var form = document.querySelector('[data-consult-form]');
+  if (form) {
+    var status = form.querySelector('[data-form-status]');
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var firstInvalid = null;
+      ['name', 'phone', 'email'].forEach(function (name) {
+        var input = form.elements[name];
+        var valid = input.value.trim() !== '' && (name !== 'email' || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input.value.trim()));
+        input.closest('.field').classList.toggle('is-invalid', !valid);
+        input.setAttribute('aria-invalid', String(!valid));
+        input.setAttribute('aria-describedby', input.id + '-err');
+        if (!valid && !firstInvalid) firstInvalid = input;
+      });
+      var consent = form.elements.consent;
+      document.getElementById('cf-consent-err').classList.toggle('is-visible', !consent.checked);
+      if (!consent.checked && !firstInvalid) firstInvalid = consent;
+      if (firstInvalid) { status.hidden = true; firstInvalid.focus(); return; }
+      status.innerHTML = 'This form is not connected yet, so your message has not been sent. Please call <a href="tel:+447949910562">+44 7949 910562</a> or email <a href="mailto:drdavide@costantinodavide.com">drdavide@costantinodavide.com</a>.';
+      status.hidden = false;
+    });
+  }
+
   /* ---------- Footer year ---------- */
   var year = document.querySelector('[data-year]');
   if (year) year.textContent = new Date().getFullYear();
