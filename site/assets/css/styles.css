@@ -360,7 +360,7 @@ body.menu-open .site-header .icon-btn { border-color: rgba(255, 255, 255, .4); b
   width: min(50%, 660px);
   margin-left: max(var(--gutter), calc((100vw - var(--container)) / 2));
   padding-top: calc(var(--header-h) + 40px);
-  padding-bottom: 80px;
+  padding-bottom: 160px;
 }
 .hero-title {
   color: var(--white);
@@ -411,7 +411,7 @@ body.menu-open .site-header .icon-btn { border-color: rgba(255, 255, 255, .4); b
       linear-gradient(0deg, var(--navy-ink) 0%, rgba(14, 28, 46, .7) 22%, rgba(14, 28, 46, 0) 48%);
   }
   .hero-content {
-    width: auto; margin: -190px 0 0; padding: 0 var(--gutter) 96px;
+    width: auto; margin: -190px 0 0; padding: 0 var(--gutter) 128px;
     background: linear-gradient(180deg, rgba(14, 28, 46, 0) 0, var(--navy-ink) 190px);
   }
   .hero-title { font-size: clamp(2.375rem, 10vw, 3rem); }
