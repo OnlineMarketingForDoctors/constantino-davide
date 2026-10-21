@@ -723,7 +723,7 @@ body.menu-open .site-header .icon-btn { border-color: rgba(255, 255, 255, .4); b
 }
 .about-inset img { width: 100%; height: 100%; object-fit: cover; }
 .about-statement {
-  position: absolute; left: -4%; top: 8%;
+  position: absolute; left: -4%; top: -3%;
   max-width: 13em;
   padding: 20px 22px;
   border-radius: var(--radius-md);
