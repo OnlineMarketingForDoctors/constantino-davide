@@ -54,6 +54,9 @@ def build(page):
     idx = header.index('id="mobile-menu"')
     head, tail = header[:idx], header[idx:]
     header = head + tail.replace(current, current + ' aria-current="page"', 1)
+    sub = meta.get("subnav")
+    if sub:
+        header = header.replace(f'<li><a href="/{sub}/">', f'<li><a href="/{sub}/" aria-current="page">')
 
     html = f"""<!doctype html>
 <html lang="en-GB">
