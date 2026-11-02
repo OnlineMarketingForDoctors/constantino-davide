@@ -298,6 +298,42 @@
     if (initial && galleryNav.querySelector('[data-gallery-filter="' + initial + '"]')) applyFilter(initial, false);
   }
 
+  /* ---------- Blog: category filter ---------- */
+  var blogFilters = document.querySelector('[data-blog-filters]');
+  if (blogFilters) {
+    var blogButtons = Array.prototype.slice.call(blogFilters.querySelectorAll('[data-blog-filter]'));
+    var blogCards = Array.prototype.slice.call(document.querySelectorAll('[data-blog-grid] .blog-card'));
+    blogButtons.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var key = btn.getAttribute('data-blog-filter');
+        blogButtons.forEach(function (b) {
+          b.classList.toggle('is-active', b === btn);
+          b.setAttribute('aria-pressed', String(b === btn));
+        });
+        blogCards.forEach(function (card) {
+          card.hidden = key !== 'all' && card.getAttribute('data-blog-cat') !== key;
+        });
+      });
+    });
+  }
+
+  /* ---------- Blog post: highlight current section in contents ---------- */
+  var tocLinks = Array.prototype.slice.call(document.querySelectorAll('.post-toc a'));
+  if (tocLinks.length && 'IntersectionObserver' in window) {
+    var tocObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        tocLinks.forEach(function (link) {
+          link.classList.toggle('is-current', link.getAttribute('href') === '#' + entry.target.id);
+        });
+      });
+    }, { rootMargin: '-20% 0px -70% 0px' });
+    tocLinks.forEach(function (link) {
+      var target = document.querySelector(link.getAttribute('href'));
+      if (target) tocObserver.observe(target);
+    });
+  }
+
   /* ---------- Footer year ---------- */
   var year = document.querySelector('[data-year]');
   if (year) year.textContent = new Date().getFullYear();

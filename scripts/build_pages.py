@@ -87,7 +87,7 @@ def build(page):
 </html>
 """
     out = SITE / meta["slug"] / "index.html"
-    out.parent.mkdir(exist_ok=True)
+    out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(html, encoding="utf-8")
     print("built", out.relative_to(ROOT))
 
