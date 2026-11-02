@@ -183,7 +183,7 @@ button { font: inherit; color: inherit; cursor: pointer; }
 }
 .site-header::before {
   content: ""; position: absolute; inset: 0;
-  background: linear-gradient(180deg, rgba(14, 28, 46, .55), rgba(14, 28, 46, 0));
+  background: linear-gradient(180deg, rgba(14, 28, 46, .75) 0%, rgba(14, 28, 46, .35) 60%, rgba(14, 28, 46, 0) 100%);
   pointer-events: none;
   transition: opacity .4s;
 }
