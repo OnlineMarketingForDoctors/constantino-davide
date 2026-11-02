@@ -334,6 +334,29 @@
     });
   }
 
+  /* ---------- Procedure pages: highlight current section in the sticky nav ---------- */
+  var sectionNav = document.querySelector('[data-section-nav]');
+  if (sectionNav && 'IntersectionObserver' in window) {
+    var secLinks = Array.prototype.slice.call(sectionNav.querySelectorAll('a'));
+    var secList = sectionNav.querySelector('ul');
+    var secObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        secLinks.forEach(function (link) {
+          var on = link.getAttribute('href') === '#' + entry.target.id;
+          link.classList.toggle('is-current', on);
+          if (on && secList.scrollWidth > secList.clientWidth) {
+            secList.scrollTo({ left: link.offsetLeft - 16, behavior: reduceMotion ? 'auto' : 'smooth' });
+          }
+        });
+      });
+    }, { rootMargin: '-35% 0px -60% 0px' });
+    secLinks.forEach(function (link) {
+      var target = document.querySelector(link.getAttribute('href'));
+      if (target) secObserver.observe(target);
+    });
+  }
+
   /* ---------- Footer year ---------- */
   var year = document.querySelector('[data-year]');
   if (year) year.textContent = new Date().getFullYear();
