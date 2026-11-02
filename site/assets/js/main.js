@@ -44,7 +44,7 @@
     }
   });
   window.addEventListener('resize', function () {
-    if (window.innerWidth > 1180 && document.body.classList.contains('menu-open')) setMenu(false);
+    if (window.innerWidth > 1399 && document.body.classList.contains('menu-open')) setMenu(false);
   });
 
   /* ---------- Current section in nav ---------- */
