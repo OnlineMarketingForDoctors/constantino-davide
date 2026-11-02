@@ -1626,7 +1626,7 @@ body.menu-open .site-header .icon-btn { border-color: rgba(255, 255, 255, .4); b
 .post-body .post-author h2 { margin-top: 2px; font-size: 1.75rem; }
 .post-body .post-author p:not(.post-author-kicker) { margin: 10px 0 14px; font-size: 1rem; line-height: 1.65; color: var(--text-muted); }
 
-.post-related { background: linear-gradient(180deg, var(--porcelain) 0%, var(--mist) 100%); }
+.post-related { background: linear-gradient(180deg, var(--porcelain) 0%, var(--mist) 45%, var(--porcelain) 100%); }
 .post-related-head { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; margin-bottom: 32px; }
 .post-related .display-md { color: var(--navy); }
 
