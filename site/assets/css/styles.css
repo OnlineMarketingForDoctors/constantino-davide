@@ -1344,6 +1344,67 @@ body.menu-open .site-header .icon-btn { border-color: rgba(255, 255, 255, .4); b
 }
 
 /* =========================================================
+   NON SURGICAL
+   ========================================================= */
+.ns-intro-grid { display: grid; grid-template-columns: 5fr 6fr; gap: clamp(32px, 6vw, 96px); align-items: start; }
+.ns-intro-copy > p:not(.lede) { margin-top: 18px; color: var(--text-muted); max-width: 36em; }
+.ns-intro-copy .lede { color: var(--text); }
+
+.ns-treatments { padding-bottom: var(--section-y); }
+.ns-treatments .container { display: grid; gap: clamp(56px, 8vw, 120px); }
+.ns-group { display: grid; grid-template-columns: 6fr 5fr; align-items: center; }
+.ns-group-media { grid-column: 1 / 2; grid-row: 1; border-radius: var(--radius-xl); overflow: hidden; aspect-ratio: 4 / 5; box-shadow: var(--shadow-lift); }
+.ns-group-media img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.4s var(--ease); }
+.ns-group:hover .ns-group-media img { transform: scale(1.03); }
+.ns-group-card {
+  grid-column: 2 / 3; grid-row: 1; position: relative; z-index: 1; margin-left: -18%;
+  padding: clamp(28px, 4vw, 52px); border-radius: var(--radius-xl);
+  background: var(--white); box-shadow: var(--shadow-deep);
+}
+.ns-group--reverse { grid-template-columns: 5fr 6fr; }
+.ns-group--reverse .ns-group-media { grid-column: 2 / 3; }
+.ns-group--reverse .ns-group-card { grid-column: 1 / 2; margin-left: 0; margin-right: -18%; }
+.ns-group-card .display-md { color: var(--navy); }
+.ns-group-intro { margin-top: 10px; color: var(--text-muted); }
+.ns-list { margin-top: 24px; border-top: 1px solid rgba(26, 51, 80, .12); }
+.ns-list li { padding: 18px 0 18px 22px; border-bottom: 1px solid rgba(26, 51, 80, .12); position: relative; }
+.ns-list li::before { content: ""; position: absolute; left: 0; top: 27px; width: 8px; height: 8px; border-radius: 50%; background: var(--brass); }
+.ns-list h3 { font-size: 1.0625rem; font-weight: 700; color: var(--navy); }
+.ns-list p { margin-top: 4px; font-size: .96875rem; color: var(--text-muted); line-height: 1.6; }
+
+.ns-process {
+  background:
+    radial-gradient(70% 70% at 100% 0%, rgba(198, 162, 122, .16) 0%, rgba(198, 162, 122, 0) 60%),
+    linear-gradient(180deg, var(--navy) 0%, var(--navy-ink) 100%);
+  color: var(--white); border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+}
+.ns-process-title { color: var(--white); margin-bottom: 48px; }
+.ns-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+.ns-steps li { padding: 28px 24px; border-radius: var(--radius-lg); background: linear-gradient(160deg, rgba(255, 255, 255, .1), rgba(255, 255, 255, .03)); border: 1px solid rgba(255, 255, 255, .12); }
+.ns-step-num { display: inline-flex; align-items: center; justify-content: center; width: 48px; height: 48px; border-radius: 50%; background: linear-gradient(135deg, var(--brass-light), var(--brass)); color: var(--navy-ink); font-family: var(--font-display); font-size: 1.375rem; }
+.ns-steps h3 { margin-top: 18px; font-family: var(--font-display); font-weight: 500; font-size: 1.5rem; }
+.ns-steps p { margin-top: 8px; color: rgba(255, 255, 255, .8); font-size: .96875rem; line-height: 1.6; }
+
+.ns-faq-grid { display: grid; grid-template-columns: 5fr 7fr; gap: clamp(32px, 6vw, 96px); align-items: start; }
+.ns-faq-lede { margin: 20px 0 28px; }
+.ns-faq .accordion { margin-top: 0; }
+
+@media (max-width: 1023px) {
+  .ns-intro-grid, .ns-faq-grid { grid-template-columns: 1fr; gap: 20px; }
+  .ns-steps { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 899px) {
+  .ns-group, .ns-group--reverse { grid-template-columns: 1fr; }
+  .ns-group-media, .ns-group--reverse .ns-group-media { grid-column: 1; grid-row: 1; aspect-ratio: 4 / 3; }
+  .ns-group-media img { object-position: 50% 12%; }
+  .ns-group-card, .ns-group--reverse .ns-group-card { grid-column: 1; grid-row: 2; margin: -64px 16px 0; }
+}
+@media (max-width: 539px) {
+  .ns-steps { grid-template-columns: 1fr; }
+  .ns-group-card, .ns-group--reverse .ns-group-card { margin: -48px 8px 0; }
+}
+
+/* =========================================================
    BACK TO TOP
    ========================================================= */
 .back-to-top {
