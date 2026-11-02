@@ -59,7 +59,9 @@
       });
     }, { rootMargin: '-45% 0px -50% 0px' });
     navLinks.forEach(function (link) {
-      var target = document.querySelector(link.getAttribute('href'));
+      var href = link.getAttribute('href');
+      if (href.charAt(0) !== '#') return;
+      var target = document.querySelector(href);
       if (target) sectionObserver.observe(target);
     });
   }
@@ -87,52 +89,54 @@
 
   /* ---------- Results: filter, buttons and drag ---------- */
   var track = document.querySelector('[data-results-track]');
-  var chips = document.querySelectorAll('[data-filter]');
-  chips.forEach(function (chip) {
-    chip.addEventListener('click', function () {
-      var filter = chip.getAttribute('data-filter');
-      chips.forEach(function (c) {
-        var active = c === chip;
-        c.classList.toggle('is-active', active);
-        c.setAttribute('aria-pressed', String(active));
+  if (track) {
+    var chips = document.querySelectorAll('[data-filter]');
+    chips.forEach(function (chip) {
+      chip.addEventListener('click', function () {
+        var filter = chip.getAttribute('data-filter');
+        chips.forEach(function (c) {
+          var active = c === chip;
+          c.classList.toggle('is-active', active);
+          c.setAttribute('aria-pressed', String(active));
+        });
+        track.querySelectorAll('.ba-card').forEach(function (card) {
+          card.hidden = filter !== 'all' && card.getAttribute('data-cat') !== filter;
+        });
+        track.scrollTo({ left: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
       });
-      track.querySelectorAll('.ba-card').forEach(function (card) {
-        card.hidden = filter !== 'all' && card.getAttribute('data-cat') !== filter;
-      });
-      track.scrollTo({ left: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
     });
-  });
 
-  function cardStep() {
-    var card = track.querySelector('.ba-card:not([hidden])');
-    return card ? card.getBoundingClientRect().width + 24 : 400;
-  }
-  document.querySelector('[data-results-prev]').addEventListener('click', function () {
-    track.scrollBy({ left: -cardStep(), behavior: reduceMotion ? 'auto' : 'smooth' });
-  });
-  document.querySelector('[data-results-next]').addEventListener('click', function () {
-    track.scrollBy({ left: cardStep(), behavior: reduceMotion ? 'auto' : 'smooth' });
-  });
-
-  var drag = null;
-  track.addEventListener('pointerdown', function (e) {
-    if (e.pointerType !== 'mouse') return;
-    drag = { x: e.clientX, left: track.scrollLeft, moved: false };
-  });
-  window.addEventListener('pointermove', function (e) {
-    if (!drag) return;
-    var dx = e.clientX - drag.x;
-    if (Math.abs(dx) > 4) {
-      drag.moved = true;
-      track.classList.add('is-dragging');
+    function cardStep() {
+      var card = track.querySelector('.ba-card:not([hidden])');
+      return card ? card.getBoundingClientRect().width + 24 : 400;
     }
-    track.scrollLeft = drag.left - dx;
-  });
-  window.addEventListener('pointerup', function () {
-    if (!drag) return;
-    drag = null;
-    track.classList.remove('is-dragging');
-  });
+    document.querySelector('[data-results-prev]').addEventListener('click', function () {
+      track.scrollBy({ left: -cardStep(), behavior: reduceMotion ? 'auto' : 'smooth' });
+    });
+    document.querySelector('[data-results-next]').addEventListener('click', function () {
+      track.scrollBy({ left: cardStep(), behavior: reduceMotion ? 'auto' : 'smooth' });
+    });
+
+    var drag = null;
+    track.addEventListener('pointerdown', function (e) {
+      if (e.pointerType !== 'mouse') return;
+      drag = { x: e.clientX, left: track.scrollLeft, moved: false };
+    });
+    window.addEventListener('pointermove', function (e) {
+      if (!drag) return;
+      var dx = e.clientX - drag.x;
+      if (Math.abs(dx) > 4) {
+        drag.moved = true;
+        track.classList.add('is-dragging');
+      }
+      track.scrollLeft = drag.left - dx;
+    });
+    window.addEventListener('pointerup', function () {
+      if (!drag) return;
+      drag = null;
+      track.classList.remove('is-dragging');
+    });
+  }
 
   /* ---------- Accordion ---------- */
   document.querySelectorAll('[data-accordion] button[aria-controls]').forEach(function (btn) {

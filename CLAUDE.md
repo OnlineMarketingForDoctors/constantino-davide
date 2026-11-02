@@ -16,3 +16,7 @@ Keep every layer below in place. Do not remove or weaken any of them unless the 
 ## Site structure
 
 The website lives in `site/` and `vercel.json` sets `"outputDirectory": "site"`, so only that folder is served. Source material (brand questionnaire, raw photos, Instagram exports) stays at the repo root and must never be copied into `site/`.
+
+## Inner pages
+
+`site/index.html` is the source of truth for the header, mobile menu, credentials strip, consultation form and footer. Inner pages are written as fragments in `pages/<name>.html` (a metadata comment, then the `<main>` content) and built with `python3 scripts/build_pages.py`, which writes `site/<slug>/index.html` with the shared blocks and the noindex meta tag. After changing the homepage header, footer or form, rerun the script.
