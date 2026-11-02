@@ -251,6 +251,53 @@
     });
   }
 
+  /* ---------- Before and after: reveal sliders ---------- */
+  document.querySelectorAll('[data-ba-slider]').forEach(function (slider) {
+    var range = slider.querySelector('.ba-range');
+    range.addEventListener('input', function () {
+      slider.style.setProperty('--pos', range.value + '%');
+    });
+  });
+
+  /* ---------- Before and after: treatment filter ---------- */
+  var galleryNav = document.querySelector('[data-gallery-nav]');
+  if (galleryNav) {
+    var filters = Array.prototype.slice.call(galleryNav.querySelectorAll('[data-gallery-filter]'));
+    var cases = Array.prototype.slice.call(document.querySelectorAll('[data-gallery-grid] .case'));
+    var heading = document.querySelector('[data-gallery-heading]');
+    var summary = document.querySelector('[data-gallery-summary]');
+    var empty = document.querySelector('[data-gallery-empty]');
+    function applyFilter(key, updateHash) {
+      var button = galleryNav.querySelector('[data-gallery-filter="' + key + '"]') || filters[0];
+      key = button.getAttribute('data-gallery-filter');
+      filters.forEach(function (f) {
+        var active = f === button;
+        f.classList.toggle('is-active', active);
+        f.setAttribute('aria-pressed', String(active));
+      });
+      var shown = 0;
+      cases.forEach(function (c) {
+        var match = key === 'all' || c.getAttribute('data-treatment') === key || c.getAttribute('data-category') === key;
+        c.hidden = !match;
+        if (match) shown++;
+      });
+      heading.textContent = key === 'all' ? 'All results' : button.firstChild.textContent.trim();
+      summary.textContent = 'Showing ' + shown + (shown === 1 ? ' patient' : ' patients');
+      empty.hidden = shown !== 0;
+      if (updateHash && window.history.replaceState) {
+        window.history.replaceState(null, '', key === 'all' ? window.location.pathname : '#' + key);
+      }
+    }
+    filters.forEach(function (f) {
+      f.addEventListener('click', function () {
+        applyFilter(f.getAttribute('data-gallery-filter'), true);
+        if (window.innerWidth < 900) f.scrollIntoView({ block: 'nearest', inline: 'center', behavior: reduceMotion ? 'auto' : 'smooth' });
+      });
+    });
+    var initial = window.location.hash.slice(1);
+    if (initial && galleryNav.querySelector('[data-gallery-filter="' + initial + '"]')) applyFilter(initial, false);
+  }
+
   /* ---------- Footer year ---------- */
   var year = document.querySelector('[data-year]');
   if (year) year.textContent = new Date().getFullYear();
