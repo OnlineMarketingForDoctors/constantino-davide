@@ -1247,11 +1247,6 @@ body.menu-open .site-header .icon-btn { border-color: rgba(255, 255, 255, .4); b
 /* =========================================================
    BEFORE AND AFTER GALLERY
    ========================================================= */
-.hero--compact { min-height: max(560px, 72svh); }
-.hero--compact .hero-media img { object-position: 30% 30%; }
-/* Mirror shot sits left in the photo, so the copy goes on the right */
-.hero--compact .hero-content { margin-left: auto; margin-right: max(var(--gutter), calc((100vw - var(--container)) / 2)); width: min(44%, 600px); }
-.hero--compact::after { background: linear-gradient(270deg, rgba(14, 28, 46, .92) 0%, rgba(18, 37, 59, .78) 34%, rgba(26, 51, 80, .25) 58%, rgba(26, 51, 80, 0) 75%), linear-gradient(0deg, rgba(14, 28, 46, .55) 0%, rgba(14, 28, 46, 0) 30%); }
 .gallery.section { padding-top: clamp(56px, 7vw, 96px); }
 
 .gallery-layout { display: grid; grid-template-columns: 270px minmax(0, 1fr); gap: clamp(32px, 4vw, 64px); align-items: start; }
@@ -1320,12 +1315,6 @@ body.menu-open .site-header .icon-btn { border-color: rgba(255, 255, 255, .4); b
 }
 @media (max-width: 639px) {
   .gallery-grid { grid-template-columns: minmax(0, 1fr); }
-}
-@media (max-width: 767px) {
-  .hero--compact .hero-content { margin: -190px 0 0; width: auto; }
-  .hero--compact .hero-media { height: 60svh; min-height: 420px; }
-  .hero--compact .hero-media img { object-position: 50% 20%; }
-  .hero--compact::after { height: 60svh; min-height: 420px; background: linear-gradient(180deg, rgba(14, 28, 46, .55) 0%, rgba(14, 28, 46, 0) 18%), linear-gradient(0deg, var(--navy-ink) 0%, rgba(14, 28, 46, .7) 22%, rgba(14, 28, 46, 0) 48%); }
 }
 
 /* =========================================================
