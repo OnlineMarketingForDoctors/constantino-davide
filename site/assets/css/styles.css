@@ -1203,7 +1203,7 @@ body.menu-open .site-header .icon-btn { border-color: rgba(255, 255, 255, .4); b
 
 .dr-quote { position: relative; min-height: 640px; display: flex; align-items: center; overflow: hidden; isolation: isolate; color: var(--white); background: var(--navy-ink); }
 .dr-quote-media { position: absolute; inset: -6% 0 -18%; z-index: -2; }
-.dr-quote-media img { width: 100%; height: 100%; object-fit: cover; object-position: 30% 18%; }
+.dr-quote-media img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 18%; }
 .dr-quote::before { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(90deg, rgba(14, 28, 46, 0) 25%, rgba(14, 28, 46, .65) 55%, rgba(14, 28, 46, .9) 100%); }
 .dr-quote-inner { display: flex; justify-content: flex-end; padding-block: 96px; }
 .dr-quote-text { width: min(520px, 100%); }
