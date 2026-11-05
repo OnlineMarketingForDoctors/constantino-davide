@@ -748,7 +748,7 @@ body.menu-open .site-header .icon-btn { border-color: rgba(255, 255, 255, .4); b
 }
 .about-inset img { width: 100%; height: 100%; object-fit: cover; }
 .about-statement {
-  position: absolute; left: -4%; top: -3%;
+  position: absolute; left: -4%; bottom: calc(100% - 44px);
   max-width: 13em;
   padding: 20px 22px;
   border-radius: var(--radius-md);
@@ -775,7 +775,7 @@ body.menu-open .site-header .icon-btn { border-color: rgba(255, 255, 255, .4); b
   .about-collage { max-width: 560px; }
 }
 @media (max-width: 639px) {
-  .about-statement { position: relative; left: auto; top: auto; margin-top: -40px; margin-left: 16px; font-size: 1.125rem; }
+  .about-statement { position: relative; left: auto; top: auto; bottom: auto; margin-top: -40px; margin-left: 16px; font-size: 1.125rem; }
   .about-collage { padding: 0 0 0 0; }
   .about-inset { position: relative; width: 70%; margin: -60px 0 0 auto; }
 }
