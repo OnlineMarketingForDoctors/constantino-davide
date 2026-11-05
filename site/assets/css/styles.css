@@ -893,6 +893,7 @@ body.menu-open .site-header .icon-btn { border-color: rgba(255, 255, 255, .4); b
   .faq-card { right: 16px; }
 }
 @media (max-width: 639px) {
+  .faq-card { position: relative; right: auto; bottom: auto; width: auto; margin: -56px 16px 0; }
   .accordion-item button { font-size: 1.0625rem; }
   .accordion-panel { padding-right: 0; }
 }
