@@ -1301,9 +1301,19 @@ body.menu-open .site-header .icon-btn { border-color: rgba(255, 255, 255, .4); b
 .gallery-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(18px, 2.5vw, 32px); }
 .case { border-radius: var(--radius-lg); background: var(--white); box-shadow: var(--shadow-soft); overflow: hidden; }
 .case[hidden] { display: none; }
-.case-info { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding: 18px 22px 20px; }
-.case-info h3 { font-family: var(--font-display); font-weight: 500; font-size: 1.5rem; color: var(--navy); line-height: 1.15; }
-.case-info p { font-size: .875rem; font-weight: 600; color: var(--brass-dark); text-align: right; }
+.case { display: flex; flex-direction: column; }
+.case .ba-slider { aspect-ratio: 4 / 3; }
+.case .ba-slider[hidden] { display: none; }
+.case-tabs { display: flex; flex-wrap: wrap; gap: 8px; padding: 14px 22px 0; }
+.case-tab { padding: 6px 14px; border: 1px solid rgba(26, 51, 80, .18); border-radius: 999px; background: var(--white); font: inherit; font-size: .8125rem; font-weight: 700; color: var(--navy); cursor: pointer; transition: background .2s, color .2s, border-color .2s; }
+.case-tab:hover { border-color: var(--brass); }
+.case-tab.is-active { background: var(--navy); border-color: var(--navy); color: var(--white); }
+.case-tab:focus-visible { outline: 2px solid var(--brass); outline-offset: 2px; }
+.case-info { padding: 16px 22px 22px; }
+.case-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+.case-head h3 { font-family: var(--font-display); font-weight: 500; font-size: 1.5rem; color: var(--navy); line-height: 1.15; }
+.case-head p { flex: 0 0 auto; font-size: .875rem; font-weight: 600; color: var(--brass-dark); text-align: right; }
+.case-caption { margin-top: 10px; font-size: .9375rem; line-height: 1.6; color: var(--text-muted); }
 
 .ba-slider { position: relative; aspect-ratio: 1; overflow: hidden; background: var(--navy-deep); user-select: none; -webkit-user-select: none; }
 .ba-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; pointer-events: none; -webkit-user-drag: none; }

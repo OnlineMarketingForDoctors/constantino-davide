@@ -259,6 +259,25 @@
     });
   });
 
+  /* ---------- Before and after: view tabs per patient ---------- */
+  document.querySelectorAll('.case-tabs').forEach(function (tabs) {
+    var card = tabs.closest('.case');
+    var buttons = Array.prototype.slice.call(tabs.querySelectorAll('[data-case-view]'));
+    buttons.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var view = btn.getAttribute('data-case-view');
+        buttons.forEach(function (b) {
+          var on = b === btn;
+          b.classList.toggle('is-active', on);
+          b.setAttribute('aria-pressed', String(on));
+        });
+        card.querySelectorAll('[data-ba-slider]').forEach(function (s) {
+          s.hidden = s.getAttribute('data-view') !== view;
+        });
+      });
+    });
+  });
+
   /* ---------- Before and after: treatment filter ---------- */
   var galleryNav = document.querySelector('[data-gallery-nav]');
   if (galleryNav) {
