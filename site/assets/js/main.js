@@ -246,7 +246,7 @@
       document.getElementById('cf-consent-err').classList.toggle('is-visible', !consent.checked);
       if (!consent.checked && !firstInvalid) firstInvalid = consent;
       if (firstInvalid) { status.hidden = true; firstInvalid.focus(); return; }
-      status.innerHTML = 'This form is not connected yet, so your message has not been sent. Please call <a href="tel:+447949910562">+44 7949 910562</a> or email <a href="mailto:drdavide@costantinodavide.com">drdavide@costantinodavide.com</a>.';
+      status.innerHTML = 'This form is not connected yet, so your message has not been sent. Please call <a href="tel:+447949910562">+44 7949 910562</a> or email <a href="mailto:admin@costantinodavide.com">admin@costantinodavide.com</a>.';
       status.hidden = false;
     });
   }
