@@ -131,11 +131,17 @@
       }
       track.scrollLeft = drag.left - dx;
     });
+    var justDragged = false;
     window.addEventListener('pointerup', function () {
       if (!drag) return;
+      justDragged = drag.moved;
       drag = null;
       track.classList.remove('is-dragging');
+      setTimeout(function () { justDragged = false; }, 0);
     });
+    track.addEventListener('click', function (e) {
+      if (justDragged) { e.preventDefault(); e.stopPropagation(); }
+    }, true);
   }
 
   /* ---------- Accordion ---------- */
