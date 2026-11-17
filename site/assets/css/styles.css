@@ -1212,9 +1212,9 @@ body.menu-open .site-header .icon-btn { border-color: rgba(255, 255, 255, .4); b
 .dr-stop-card p { margin-top: 8px; color: rgba(255, 255, 255, .8); line-height: 1.6; }
 
 .dr-quote { position: relative; min-height: 640px; display: flex; align-items: center; overflow: hidden; isolation: isolate; color: var(--white); background: var(--navy-ink); }
-.dr-quote-media { position: absolute; inset: -6% 0 -18%; z-index: -2; }
-.dr-quote-media img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 18%; }
-.dr-quote::before { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(90deg, rgba(14, 28, 46, 0) 25%, rgba(14, 28, 46, .65) 55%, rgba(14, 28, 46, .9) 100%); }
+.dr-quote-media { position: absolute; top: 0; bottom: 0; left: 0; width: 50%; z-index: -2; }
+.dr-quote-media img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 22%; }
+.dr-quote::before { content: ""; position: absolute; top: 0; bottom: 0; left: 0; width: 50%; z-index: -1; background: linear-gradient(90deg, rgba(14, 28, 46, 0) 55%, var(--navy-ink) 100%); }
 .dr-quote-inner { display: flex; justify-content: flex-end; padding-block: 96px; }
 .dr-quote-text { width: min(520px, 100%); }
 .dr-quote .display-lg { color: var(--white); }
@@ -1274,7 +1274,8 @@ body.menu-open .site-header .icon-btn { border-color: rgba(255, 255, 255, .4); b
   .dr-facts { grid-template-columns: 1fr; }
   .dr-quote { display: block; min-height: 0; }
   .dr-quote-media { position: relative; inset: auto; height: 70vw; min-height: 280px; transform: none !important; }
-  .dr-quote-media img { object-position: 22% 50%; }
+  .dr-quote-media { width: 100%; height: 110vw; max-height: 620px; }
+  .dr-quote-media img { object-position: 60% 20%; }
   .dr-quote::before { display: none; }
   .dr-quote-inner { padding-block: 40px 64px; }
 }
